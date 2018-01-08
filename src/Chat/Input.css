@@ -1,0 +1,23 @@
+.inputField {
+  flex: 1;
+  font-size: 1em;
+  padding: 0.4em 0.8em;
+  outline: none;
+  border-radius: 3px;
+  border: 1px solid #cccccc;
+}
+
+.inputButton {
+  margin-left: 0.4em;
+  width: 150px;
+  border-radius: 3px;
+  padding: 0.4em 0.8em;
+  font-size: 1em;
+  cursor: pointer;
+  background: #cccccc;
+  outline: none;
+}
+
+.inputButton:hover {
+  background: #a1a1a1;
+}

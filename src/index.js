@@ -1,9 +1,9 @@
-import React from 'react';
-import { store } from './store';
-import { Provider } from 'react-redux';
-import { render } from 'react-dom';
-import App from './App';
-import './lib/ws';
+import React from "react";
+import { store } from "./lib/store";
+import { Provider } from "react-redux";
+import { render } from "react-dom";
+import App from "./App";
+import "./lib/ws";
 
 const Root = (
   <Provider store={store}>
@@ -11,5 +11,5 @@ const Root = (
   </Provider>
 );
 
-const target = document.getElementById('root');
+const target = document.getElementById("root");
 render(Root, target);

@@ -1,10 +1,20 @@
-import { API_HOST, API_PORT } from '../../config';
+import { API_HOST, API_PORT } from "../../config";
+import { store } from "./store";
+import { getUsers, createMessages } from "./actions";
 
 const ws = new WebSocket(`ws://${API_HOST}:${API_PORT}`);
-import { getUsers } from '../ChatRooms/';
-import { store } from '../store';
 
 ws.onmessage = function(event) {
   const data = JSON.parse(event.data);
-  store.dispatch(getUsers(data.id));
+  if (data.event === "USER_JOINED") {
+    store.dispatch(getUsers(data.id));
+    store.dispatch(
+      createMessages([
+        {
+          type: "USER_JOINED",
+          payload: data.payload
+        }
+      ])
+    );
+  }
 };

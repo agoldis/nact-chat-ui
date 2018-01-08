@@ -1,31 +1,30 @@
-import React from 'react';
-import { connect } from 'react-redux';
+import React from "react";
+import { connect } from "react-redux";
+import { grid } from "./App.css";
+import { Chat } from "./Chat";
+import { Modal } from "./Modal";
+import { Join } from "./Chat";
+import Aux from "./Aux";
 
-import { grid } from './App.css';
-
-import { ChatRooms } from './ChatRooms';
-import { Modal } from './Modal';
-
-import { Join } from './User';
+import "./App.css";
 
 class App extends React.Component {
   componentDidMount() {
     this.props.dispatch({
-      type: 'SHOW_MODAL'
+      type: "SHOW_MODAL"
     });
   }
   render() {
+    const { name } = this.props;
     return (
-      <div className={grid}>
-        <Modal>
+      <Aux>
+        <Modal preventClose>
           <Join />
         </Modal>
-        <ChatRooms />
-        <div>Conversation</div>
-        <div>Users list</div>
-      </div>
+        {name ? <Chat user={name} /> : null}
+      </Aux>
     );
   }
 }
 
-export default connect()(App);
+export default connect(({ name }) => ({ name }))(App);
